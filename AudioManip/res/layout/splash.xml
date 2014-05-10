@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lights"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/AppBaseTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.60"
+        android:ellipsize="start"
+        android:fadingEdge="horizontal|vertical"
+        android:fadingEdgeLength="@dimen/abc_action_bar_stacked_tab_max_width"
+        android:fontFamily="@string/abc_action_menu_overflow_description"
+        android:gravity="top|bottom|center"
+        android:height="@dimen/abc_action_bar_title_text_size"
+        android:shadowColor="@color/LightBlue"
+        android:shadowDx="6"
+        android:shadowDy="5"
+        android:shadowRadius="6"
+        android:text="HELLO"
+        android:textColor="@color/MediumSlateBlue"
+        android:textSize="83sp"
+        android:textStyle="bold|italic"
+        android:typeface="normal" />
+
+</LinearLayout>
