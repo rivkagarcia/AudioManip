@@ -1143,6 +1143,8 @@ containing a value of this type.
         public static final int play=0x7f02005a;
         public static final int rec=0x7f02005b;
         public static final int sound_wave=0x7f02005c;
+        public static final int stop=0x7f02005d;
+        public static final int streak=0x7f02005e;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f06003d;
@@ -1157,7 +1159,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f060016;
         public static final int action_menu_presenter=0x7f060017;
         public static final int action_mode_close_button=0x7f060024;
-        public static final int action_settings=0x7f060042;
+        public static final int action_settings=0x7f060044;
         public static final int activity_chooser_view_content=0x7f060025;
         public static final int always=0x7f06000b;
         public static final int beginning=0x7f060011;
@@ -1179,15 +1181,16 @@ containing a value of this type.
         public static final int image=0x7f060027;
         public static final int listMode=0x7f060001;
         public static final int list_item=0x7f060029;
+        public static final int mediaController1=0x7f060041;
         public static final int middle=0x7f060012;
         public static final int never=0x7f060009;
         public static final int none=0x7f060010;
         public static final int normal=0x7f060000;
-        public static final int playButton=0x7f060041;
+        public static final int playButton=0x7f060043;
         public static final int progress_circular=0x7f060018;
         public static final int progress_horizontal=0x7f060019;
         public static final int radio=0x7f06002f;
-        public static final int recButton=0x7f060040;
+        public static final int recButton=0x7f060042;
         public static final int search_badge=0x7f060032;
         public static final int search_bar=0x7f060031;
         public static final int search_button=0x7f060033;
@@ -1203,6 +1206,7 @@ containing a value of this type.
         public static final int showHome=0x7f060004;
         public static final int showTitle=0x7f060006;
         public static final int spinner1=0x7f06003f;
+        public static final int spinner2=0x7f060040;
         public static final int split_action_bar=0x7f06001e;
         public static final int submit_area=0x7f060039;
         public static final int tabMode=0x7f060002;
@@ -1271,7 +1275,10 @@ containing a value of this type.
         public static final int main=0x7f0d0000;
     }
     public static final class raw {
-        public static final int sci_fi_engine_shut_down=0x7f050000;
+        public static final int all_of_me=0x7f050000;
+        public static final int dare_to_dream=0x7f050001;
+        public static final int get_money=0x7f050002;
+        public static final int sci_fi_engine_shut_down=0x7f050003;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
