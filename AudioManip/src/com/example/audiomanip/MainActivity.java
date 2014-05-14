@@ -3,8 +3,11 @@ package com.example.audiomanip;
 import android.R.bool;
 import android.R.layout;
 import android.app.Activity;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,19 +28,22 @@ import java.io.IOException;
 import android.graphics.Color;
 
 
-public class MainActivity extends Activity
+public class MainActivity<tutorialFour> extends Activity
 {
     private static final String LOG_TAG = "AudioRecordTest";
     private static String mFileName = null;
-    private RecordButton mRecordButton = null;
+    private ImageButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
-    private PlayButton   mPlayButton = null;
+    private ImageButton   mPlayButton = null;
     private bool playSeekBar = null;
     private MediaPlayer   mPlayer = null;
-    private SeekBar seekbar = null;
     private long duration;
+    //boolean Button;
+    Spinner spinner;
+    String[] paths = {"1st song", "2nd song", "3rd song"};
     
-    private void onRecord(boolean start) {
+     
+    void onRecord(boolean start) {
         if (start) {
             startRecording();
         } else {
@@ -68,14 +74,13 @@ public class MainActivity extends Activity
         } catch (IOException e) {
             Log.e(LOG_TAG, "prepare() failed");
         }finally{
-        	mPlayButton.setBackgroundResource(R.drawable.pause);
+        	//mPlayButton.setBackgroundResource(R.drawable.pause);
 				
 		}
 	}
 };
 timer.start();
 }
-
     private void stopPlaying() {
         mPlayer.release();
         mPlayer = null;
@@ -111,7 +116,7 @@ timer.start();
                 if (mStartRecording) {
                     setText("Stop recording");
                     mRecordButton.setBackgroundResource(R.drawable.pause);
-                	mRecordButton.setTextColor(Color.CYAN);
+                	//mRecordButton.setTextColor(Color.CYAN);
                 	if(mStartRecording == true){
                 		mRecordButton.setBackgroundResource(R.drawable.pause);
                 	}
@@ -128,6 +133,7 @@ timer.start();
 				return null;
 			}
         };
+        
 
         public RecordButton(Context ctx) {
             super(ctx);
@@ -137,7 +143,7 @@ timer.start();
     }
 
     class PlayButton extends Button {
-        boolean mStartPlaying = true;
+		boolean mStartPlaying = true;
 
         OnClickListener clicker = new OnClickListener() {
             public void onClick(View v) {
@@ -147,36 +153,21 @@ timer.start();
         				Toast.LENGTH_SHORT).show();
                 if (mStartPlaying) {
                     setText("Stop playing");
-                    mPlayButton.setTextColor(Color.CYAN);
+                    //mPlayButton.setTextColor(Color.CYAN);
                     mRecordButton.setBackgroundResource(R.drawable.rec);
                     if(mStartPlaying == true){
                 		mPlayButton.setBackgroundResource(R.drawable.pause);
                 	}
                     
                 } 
-//                Handler handler = new Handler();
-//                
-//                Runnable r = new Runnable(){
-//                	@Override
-//                	public void run(){
-//                		Toast.makeText(getApplicationContext(), "Duration" + duration,
-//                				Toast.LENGTH_SHORT).show();
-//                		setText("Start playing");
-//                        mPlayButton.setTextColor(Color.CYAN);
-//                        mPlayButton.setBackgroundResource(R.drawable.play);
-//                		
-//                	}
-//                };
-//                handler.postDelayed(r, duration);
                 else {
                     setText("Start playing");
-                    mPlayButton.setTextColor(Color.CYAN);
+                    //mPlayButton.setTextColor(Color.CYAN);
                     mPlayButton.setBackgroundResource(R.drawable.play);
                 }
                 mStartPlaying = !mStartPlaying;
             }
         };
-
         public PlayButton(Context ctx) {
             super(ctx);
             setText("Start playing");
@@ -190,12 +181,19 @@ timer.start();
     }
 
    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        LinearLayout ll = new LinearLayout(this);
-        ll.setBackgroundResource(R.drawable.sound_wave);
-        mRecordButton = new RecordButton(this);
-        ll.addView(mRecordButton,
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.fragment_main);
+       ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, paths);
+       spinner = (Spinner) findViewById(R.id.spinner1);
+       spinner.setAdapter(adapter);      
+        //LinearLayout ll = new LinearLayout(this);
+        //setBackgroundResource(R.drawable.sound_wave);
+        mRecordButton = (ImageButton) findViewById(R.id.imageButton1);
+        //musicButton = (ImageButton) findViewById(R.id.imageButton3);
+        mPlayButton = (ImageButton) findViewById(R.id.imageButton2);
+        
+        /*addView(mRecordButton,
             new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -206,14 +204,29 @@ timer.start();
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 0));
+        musicButton = new Button(this);
+        MediaPlayer playSong;
+        ll.addView(musicButton,
+            new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                0));
         setContentView(ll);
         mRecordButton.setBackgroundResource(R.drawable.rec);
         mRecordButton.setTextColor(Color.CYAN);
         mPlayButton.setBackgroundResource(R.drawable.play);
     	mPlayButton.setTextColor(Color.CYAN);
-    }
+    	playSong = MediaPlayer.create(this, R.raw.sci_fi_engine_shut_down);
+    	musicButton.setBackgroundResource(R.drawable.play);
+    	musicButton.setTextColor(Color.CYAN);*/
+   }
+    private android.widget.Button create(MainActivity<tutorialFour> mainActivity,
+		int sciFiEngineShutDown) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
-    @Override
+	@Override
     public void onPause() {
         super.onPause();
         if (mRecorder != null) {
